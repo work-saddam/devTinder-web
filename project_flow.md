@@ -13,6 +13,8 @@
 - Create Login Page
 - Install Axois
 - Fix CORS:- On Backend, install cors => add middleware to app with configuration:
-    app.use(cors( {origin:"http://localhost:....", credentials:true} )) 
-- Whenever you making a call using axios => 
-    axios.post( "domianName(API)", {data}, {withCredentials:true} )
+  app.use(cors( {origin:"http://localhost:....", credentials:true} ))
+- Whenever you making a call using axios =>
+  axios.post( "domianName(API)", {data}, {withCredentials:true} )
+- Install @reduxjs/toolkit react-redux - https://redux-toolkit.js.org/tutorials/quick-start
+- configureStore => provider => createSlice => add reducer to store
