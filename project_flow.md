@@ -16,5 +16,9 @@
   app.use(cors( {origin:"http://localhost:....", credentials:true} ))
 - Whenever you making a call using axios =>
   axios.post( "domianName(API)", {data}, {withCredentials:true} )
+- Refactor code: add constants file & components folder
 - Install @reduxjs/toolkit react-redux - https://redux-toolkit.js.org/tutorials/quick-start
-- configureStore => provider => createSlice => add reducer to store
+- configureStore => Provider => createSlice => add reducer to store
+- Add redux Devtools on chrome
+- Login and see your data is coming properly in store
+- Navbar should update as soon as user logs in
