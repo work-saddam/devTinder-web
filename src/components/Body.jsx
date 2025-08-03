@@ -24,6 +24,7 @@ const Body = () => {
       if (error.status === 401) {
         navigate("/login");
       }
+      // Error Logic maybe redirect to error page.
       console.error(error);
     }
   };
