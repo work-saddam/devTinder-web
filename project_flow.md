@@ -26,3 +26,4 @@
 - If token is not present redirect to login page
 - Logout
 - get the feed & add the feed in the store
+- bulit user card on Feed page

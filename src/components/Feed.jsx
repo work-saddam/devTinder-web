@@ -25,7 +25,13 @@ const Feed = () => {
     getFeet();
   }, []);
 
-  return <div>Feed</div>;
+  return (
+    feed && (
+      <div className="flex justify-center my-5">
+        <UserCard user={feed[0]} />
+      </div>
+    )
+  );
 };
 
 export default Feed;
