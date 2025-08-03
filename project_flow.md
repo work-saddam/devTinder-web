@@ -22,3 +22,5 @@
 - Add redux Devtools on chrome
 - Login and see your data is coming properly in store
 - Navbar should update as soon as user logs in
+- You should not access other routes without login
+- If token is not present redirect to login page
