@@ -25,3 +25,4 @@
 - You should not access other routes without login
 - If token is not present redirect to login page
 - Logout
+- get the feed & add the feed in the store
