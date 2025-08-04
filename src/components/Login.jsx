@@ -31,7 +31,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center mt-[8%]">
+    <div className="flex justify-center mt-[8%] mb-16">
       <form onSubmit={handleLogin}>
         <div className="card card-dash bg-base-300 w-96">
           <div className="card-body">
