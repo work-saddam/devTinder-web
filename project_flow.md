@@ -27,3 +27,6 @@
 - Logout
 - get the feed & add the feed in the store
 - bulit user card on Feed page
+- Edit feature
+- show toast message on save of profile
+- see all my connections

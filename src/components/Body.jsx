@@ -25,7 +25,7 @@ const Body = () => {
         navigate("/login");
       }
       // Error Logic maybe redirect to error page.
-      console.error(error);
+      // console.error(error);
     }
   };
 
