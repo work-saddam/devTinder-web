@@ -31,3 +31,4 @@
 - show toast message on save of profile
 - Connection Page - see all my connections
 - Requests Page - see all pending requests
+- Feature: Accept/Reject Connection requests
