@@ -29,4 +29,5 @@
 - bulit user card on Feed page
 - Edit feature
 - show toast message on save of profile
-- see all my connections
+- Connection Page - see all my connections
+- Requests Page - see all pending requests
