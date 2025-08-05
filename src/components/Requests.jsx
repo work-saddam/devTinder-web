@@ -40,55 +40,57 @@ const Requests = () => {
   if (requests.length === 0) return <h1>No Requests Found</h1>;
 
   return (
-    <div className="mb-16">
-      <h1 className="text-2xl font-bold text-center my-4">Requests</h1>
+    <div className="mb-16 px-4">
+      <h1 className="text-2xl font-bold text-center my-6">Requests</h1>
 
-      {requests.map((request) => {
-        const { _id, firstName, lastName, photoUrl, gender, age, about } =
-          request.fromUserId;
+      <div className="flex flex-col gap-4 max-w-2xl mx-auto">
+        {requests.map((request) => {
+          const { _id, firstName, lastName, photoUrl, gender, age, about } =
+            request.fromUserId;
 
-        return (
-          <div
-            key={_id}
-            className="card bg-base-300 shadow-md w-[95%] max-w-md mx-auto my-4 p-4"
-          >
-            <div className="flex justify-center mb-3">
-              <div className="avatar">
-                <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                  <img src={photoUrl} alt="user" className="object-cover" />
+          return (
+            <div
+              key={_id}
+              className="flex items-center gap-4 bg-base-200 p-4 rounded-xl shadow hover:shadow-md transition-all"
+            >
+              {/* Avatar */}
+              <img
+                src={photoUrl}
+                alt={`${firstName} ${lastName}`}
+                className="w-20 h-20 rounded-full object-cover"
+              />
+
+              {/* Info & Actions */}
+              <div className="flex-1 space-y-1">
+                <h2 className="text-lg font-semibold">
+                  {firstName} {lastName}
+                </h2>
+                {age && gender && (
+                  <p className="text-sm text-gray-400">
+                    {age}, {gender}
+                  </p>
+                )}
+                <p className="text-sm">{about}</p>
+
+                <div className="flex gap-2 mt-2">
+                  <button
+                    className="btn btn-error btn-soft btn-sm"
+                    onClick={() => reviewRequest("rejected", request._id)}
+                  >
+                    Reject
+                  </button>
+                  <button
+                    className="btn btn-success btn-soft btn-sm"
+                    onClick={() => reviewRequest("accepted", request._id)}
+                  >
+                    Accept
+                  </button>
                 </div>
               </div>
             </div>
-
-            <div className="text-center space-y-1 mb-4">
-              <h2 className="text-lg font-bold">
-                {firstName} {lastName}
-              </h2>
-              {age && gender && (
-                <p className="text-sm text-gray-400">
-                  {age}, {gender}
-                </p>
-              )}
-              <p className="text-sm">{about}</p>
-            </div>
-
-            <div className="flex justify-center gap-4">
-              <button
-                className="btn btn-soft btn-sm btn-error"
-                onClick={() => reviewRequest("rejected", request._id)}
-              >
-                Reject
-              </button>
-              <button
-                className="btn btn-soft btn-sm btn-success"
-                onClick={() => reviewRequest("accepted", request._id)}
-              >
-                Accept
-              </button>
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 };
