@@ -32,3 +32,4 @@
 - Connection Page - see all my connections
 - Requests Page - see all pending requests
 - Feature: Accept/Reject Connection requests
+- Send/Ignore user from feed
