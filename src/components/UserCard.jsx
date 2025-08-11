@@ -23,7 +23,7 @@ const UserCard = ({ user }) => {
 
   return (
     <div className="card bg-base-300 w-96 shadow-sm">
-      <figure className="w-full max-h-[438px] overflow-hidden">
+      <figure className="w-full aspect-square overflow-hidden">
         <img
           src={photoUrl}
           loading="lazy"

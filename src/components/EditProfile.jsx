@@ -40,7 +40,7 @@ const EditProfile = ({ user }) => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-6 lg:gap-10 mt-8 mb-16 px-4">
+    <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-6 lg:gap-10 my-4 sm:my-6 px-4">
       {/* Form */}
       <div className="flex justify-center w-full sm:w-auto">
         <form onSubmit={saveProfile} className="w-full sm:w-96">
