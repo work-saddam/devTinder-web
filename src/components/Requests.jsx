@@ -53,7 +53,7 @@ const Requests = () => {
     );
 
   return (
-    <div className="mb-16 px-4">
+    <div className="mb-4 px-4">
       <h1 className="text-2xl font-bold text-center my-6">Requests</h1>
 
       <div className="flex flex-col gap-4 max-w-2xl mx-auto">

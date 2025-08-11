@@ -46,13 +46,17 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center mt-[8%] mb-16">
-      <form onSubmit={isLoginForm ? handleLogin : handleSignUp}>
-        <div className="card card-dash bg-base-300 w-96">
+    <div className="flex justify-center items-center min-h-screen px-4">
+      <form
+        onSubmit={isLoginForm ? handleLogin : handleSignUp}
+        className="w-full max-w-96"
+      >
+        <div className="card card-dash bg-base-300 shadow-lg">
           <div className="card-body">
-            <h2 className="card-title justify-center">
+            <h2 className="card-title justify-center text-2xl">
               {isLoginForm ? "Login" : "Sign Up"}
             </h2>
+
             <fieldset className="fieldset">
               {!isLoginForm && (
                 <>
@@ -83,6 +87,7 @@ const Login = () => {
                 value={emailId}
                 onChange={(e) => setEmailId(e.target.value)}
               />
+
               <label className="fieldset-legend">Password</label>
               <input
                 type="password"
@@ -92,7 +97,9 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </fieldset>
+
             <p className="text-red-500">{error}</p>
+
             <div className="card-actions justify-center">
               <button
                 type="submit"
@@ -101,6 +108,7 @@ const Login = () => {
                 {isLoginForm ? "Login" : "Sign Up"}
               </button>
             </div>
+
             <p
               className="text-center p-2 cursor-pointer"
               onClick={() => setIsLoginForm(!isLoginForm)}

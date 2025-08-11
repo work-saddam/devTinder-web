@@ -26,6 +26,7 @@ const UserCard = ({ user }) => {
       <figure className="w-full max-h-[438px] overflow-hidden">
         <img
           src={photoUrl}
+          loading="lazy"
           alt="user photo"
           className="w-full h-full object-cover"
         />
