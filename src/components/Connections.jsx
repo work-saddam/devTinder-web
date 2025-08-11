@@ -24,7 +24,20 @@ const Connections = () => {
   }, []);
 
   if (!connections) return;
-  if (connections.length === 0) return <h1>No Connections Found</h1>;
+  if (connections.length === 0)
+    return (
+      <div className="text-center">
+        <h2 className="sm:text-3xl text-2xl font-bold text-neutral-content pt-8">
+          No Connections Found!
+        </h2>
+        <img
+          loading="lazy"
+          src="/assets/no_connection_found.svg"
+          alt="user connection found"
+          className="block mx-auto w-96"
+        />
+      </div>
+    );
 
   return (
     <div className="mb-16 px-4">

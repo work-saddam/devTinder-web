@@ -6,21 +6,21 @@ import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [emailId, setEmailId] = useState("mark@gmail.com");
-  const [password, setPassword] = useState("Saddam@123");
+  const [emailId, setEmailId] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const [isLoginForm, setIsLoginForm] = useState(true);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post(
         BASE_URL + "/login",
-        {
-          emailId,
-          password,
-        },
+        { emailId, password },
         { withCredentials: true }
       );
       dispatch(addUser(res?.data?.user));
@@ -30,13 +30,51 @@ const Login = () => {
     }
   };
 
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(
+        BASE_URL + "/signup",
+        { firstName, lastName, emailId, password },
+        { withCredentials: true }
+      );
+      dispatch(addUser(res?.data?.data));
+      navigate("/profile");
+    } catch (error) {
+      setError(error?.response?.data?.error || "Something went wrong!");
+    }
+  };
+
   return (
     <div className="flex justify-center mt-[8%] mb-16">
-      <form onSubmit={handleLogin}>
+      <form onSubmit={isLoginForm ? handleLogin : handleSignUp}>
         <div className="card card-dash bg-base-300 w-96">
           <div className="card-body">
-            <h2 className="card-title justify-center">Login</h2>
+            <h2 className="card-title justify-center">
+              {isLoginForm ? "Login" : "Sign Up"}
+            </h2>
             <fieldset className="fieldset">
+              {!isLoginForm && (
+                <>
+                  <label className="fieldset-legend">First Name</label>
+                  <input
+                    type="text"
+                    className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="Enter your first name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                  <label className="fieldset-legend">Last Name</label>
+                  <input
+                    type="text"
+                    className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="Enter your last name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </>
+              )}
+
               <label className="fieldset-legend">Email ID</label>
               <input
                 type="email"
@@ -60,9 +98,17 @@ const Login = () => {
                 type="submit"
                 className="btn w-full btn-primary hover:scale-[1.02] transition-transform mt-4"
               >
-                Login
+                {isLoginForm ? "Login" : "Sign Up"}
               </button>
             </div>
+            <p
+              className="text-center p-2 cursor-pointer"
+              onClick={() => setIsLoginForm(!isLoginForm)}
+            >
+              {isLoginForm
+                ? "New to DevTinder? Sign up now"
+                : "Already Registered? Login now"}
+            </p>
           </div>
         </div>
       </form>

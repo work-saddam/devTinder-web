@@ -37,7 +37,20 @@ const Requests = () => {
   }, []);
 
   if (!requests) return;
-  if (requests.length === 0) return <h1>No Requests Found</h1>;
+  if (requests.length === 0)
+    return (
+      <div className="text-center">
+        <h3 className="sm:text-3xl text-2xl font-bold text-neutral-content py-8">
+          No Connection Requests Received!
+        </h3>
+        <img
+          loading="lazy"
+          src="/assets/no_request_found.png"
+          alt="no request found"
+          className="block mx-auto w-100 p-4"
+        />
+      </div>
+    );
 
   return (
     <div className="mb-16 px-4">

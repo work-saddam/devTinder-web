@@ -26,7 +26,20 @@ const Feed = () => {
   }, []);
 
   if (!feed) return;
-  if (feed.length === 0) return <h1>No New Users Found</h1>;
+  if (feed.length === 0)
+    return (
+      <div className="text-center">
+        <h2 className="sm:text-3xl text-2xl font-bold text-neutral-content py-8">
+          No New Users Found!
+        </h2>
+        <img
+          loading="lazy"
+          src="/assets/no-user-found.svg"
+          alt="no user found"
+          className="block mx-auto w-96"
+        />
+      </div>
+    );
 
   return (
     feed && (
