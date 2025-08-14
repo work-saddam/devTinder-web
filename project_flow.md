@@ -34,3 +34,7 @@
 - Feature: Accept/Reject Connection requests
 - Send/Ignore user from feed
 - Sign Up page
+
+## Real Time Chat using WebSocket(Socket.io)
+
+- Build the UI for Chat window on /chat/:targetUserId

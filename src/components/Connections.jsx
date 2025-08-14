@@ -3,6 +3,7 @@ import { BASE_URL } from "../utils/constants";
 import { useEffect } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionsSlice";
+import { Link } from "react-router-dom";
 
 const Connections = () => {
   const dispatch = useDispatch();
@@ -59,7 +60,6 @@ const Connections = () => {
                 alt={`${firstName} ${lastName}`}
                 className="w-20 h-20 rounded-full object-cover"
               />
-
               {/* Info */}
               <div className="flex-1">
                 <h2 className="text-lg font-semibold">
@@ -72,6 +72,11 @@ const Connections = () => {
                 )}
                 <p className="text-sm">{about}</p>
               </div>
+              <Link to={`/chat/${_id}`}>
+                <button className="btn btn-soft btn-warning sm:w-24">
+                  Chat
+                </button>
+              </Link>
             </div>
           );
         })}
