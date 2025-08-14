@@ -46,28 +46,40 @@ const EditProfile = ({ user }) => {
         <form onSubmit={saveProfile} className="w-full sm:w-96">
           <div className="card card-dash bg-base-300 w-full">
             <div className="card-body">
-              <h2 className="card-title justify-center">Edit Profile</h2>
+              <h2 className="card-title text-2xl mb-2 justify-center">
+                Edit Profile
+              </h2>
               <fieldset className="fieldset">
-                {/* First Name */}
-                <label className="fieldset-legend">First Name</label>
-                <input
-                  type="text"
-                  className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                  value={firstName}
-                  onChange={(e) => setFirsttName(e.target.value)}
-                />
-                {/* Last Name */}
-                <label className="fieldset-legend">Last Name</label>
-                <input
-                  type="text"
-                  className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                />
+                <div className="flex gap-4">
+                  {/* First Name */}
+                  <div className="flex-1">
+                    <label className="fieldset-legend">First Name</label>
+                    <input
+                      type="text"
+                      placeholder="Enter First Name"
+                      className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      value={firstName}
+                      onChange={(e) => setFirsttName(e.target.value)}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    {/* Last Name */}
+                    <label className="fieldset-legend">Last Name</label>
+                    <input
+                      type="text"
+                      placeholder="Enter Last Name"
+                      className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                    />
+                  </div>
+                </div>
+
                 {/* Photo URL */}
                 <label className="fieldset-legend">Photo Url</label>
                 <input
                   type="text"
+                  placeholder="Eg: LinkedIn Profile Photo URL"
                   className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   value={photoUrl}
                   onChange={(e) => setPhotoUrl(e.target.value)}
@@ -78,6 +90,7 @@ const EditProfile = ({ user }) => {
                     <label className="fieldset-legend">Age</label>
                     <input
                       type="text"
+                      placeholder="Enter Age"
                       className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                       value={age}
                       onChange={(e) => setAge(e.target.value)}
@@ -101,6 +114,7 @@ const EditProfile = ({ user }) => {
                 <label className="fieldset-legend">Skills</label>
                 <input
                   type="text"
+                  placeholder="Eg: React, Java, Python..."
                   className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   value={skills}
                   onChange={(e) => setSkills(e.target.value)}
@@ -110,6 +124,7 @@ const EditProfile = ({ user }) => {
                 <textarea
                   className="textarea w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   value={about}
+                  placeholder="About your self"
                   onChange={(e) => setAbout(e.target.value)}
                 ></textarea>
               </fieldset>
@@ -117,7 +132,7 @@ const EditProfile = ({ user }) => {
               <div className="card-actions justify-center">
                 <button
                   type="submit"
-                  className="btn w-full btn-primary hover:scale-[1.02] transition-transform mt-4"
+                  className="btn w-full btn-primary hover:scale-[1.02] transition-transform mt-3"
                 >
                   Save Profile
                 </button>
@@ -131,6 +146,8 @@ const EditProfile = ({ user }) => {
       <div className="w-full sm:w-auto flex justify-center">
         <UserCard
           user={{ firstName, lastName, age, gender, about, photoUrl, skills }}
+          showActions={false}
+          showDemoButton={true}
         />
       </div>
 
