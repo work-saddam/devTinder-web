@@ -38,3 +38,5 @@
 ## Real Time Chat using WebSocket(Socket.io)
 
 - Build the UI for Chat window on /chat/:targetUserId
+- On Backend npm i socket.io & Setup socket.io
+- On Frontend npm i socket.io-client & Setup
