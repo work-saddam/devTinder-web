@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { createSocketConnection } from "../utils/socket";
 import { useSelector } from "react-redux";
@@ -11,6 +11,11 @@ const Chat = () => {
   const [newMessage, setNewMessage] = useState("");
   const user = useSelector((store) => store.user);
   const userId = user?._id;
+  const messagesEndRef = useRef(null); // ref for auto-scroll
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const fetchChat = async () => {
     try {
@@ -66,7 +71,14 @@ const Chat = () => {
     };
   }, [userId, targetUserId]);
 
+  // Auto-scroll whenever messages change
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   const sendMessage = () => {
+    if (!newMessage.trim()) return;
+
     const socket = createSocketConnection();
     socket.emit("sendMessage", {
       firstName: user.firstName,
@@ -109,6 +121,8 @@ const Chat = () => {
             </div>
           );
         })}
+        {/* dummy div for auto-scroll */}
+        <div ref={messagesEndRef} />
       </div>
 
       {/* Input Box */}
@@ -119,8 +133,18 @@ const Chat = () => {
           className="input rounded-md border border-gray-300 focus:outline-none focus:border-info w-full"
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && newMessage.trim()) {
+              sendMessage();
+            }
+          }}
         />
-        <button onClick={sendMessage} className="btn btn-soft btn-info">
+        <button
+          onClick={() => {
+            if (newMessage.trim()) sendMessage();
+          }}
+          className="btn btn-soft btn-info"
+        >
           Send
         </button>
       </div>
