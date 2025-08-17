@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { createSocketConnection } from "../utils/socket";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import { BASE_URL } from "../utils/constants";
 
 const Chat = () => {
   const { targetUserId } = useParams();
@@ -9,6 +11,32 @@ const Chat = () => {
   const [newMessage, setNewMessage] = useState("");
   const user = useSelector((store) => store.user);
   const userId = user?._id;
+
+  const fetchChat = async () => {
+    try {
+      const chat = await axios.get(BASE_URL + "/chat/" + targetUserId, {
+        withCredentials: true,
+      });
+      // console.log(chat.data.chat.messages);
+
+      const chatMessages = chat?.data?.chat?.messages.map((msg) => {
+        return {
+          senderId: msg.senderId._id,
+          firstName: msg.senderId.firstName,
+          lastName: msg.senderId.lastName,
+          text: msg.text,
+          createdAt: msg.createdAt,
+        };
+      });
+      setMessages(chatMessages);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchChat();
+  }, []);
 
   useEffect(() => {
     if (!user) return;
@@ -21,10 +49,16 @@ const Chat = () => {
       targetUserId,
     });
 
-    socket.on("messageRecieved", ({ firstName, text }) => {
-      // console.log(firstName + ": " + text);
-      setMessages((messages) => [...messages, { firstName, text }]);
-    });
+    socket.on(
+      "messageRecieved",
+      ({ senderId, firstName, lastName, text, createdAt }) => {
+        // console.log(firstName + ": " + text);
+        setMessages((messages) => [
+          ...messages,
+          { senderId, firstName, lastName, text, createdAt },
+        ]);
+      }
+    );
 
     // when the component unmount, we must have to close the socket!!
     return () => {
@@ -36,10 +70,12 @@ const Chat = () => {
     const socket = createSocketConnection();
     socket.emit("sendMessage", {
       firstName: user.firstName,
+      lastName: user.lastName,
       userId,
       targetUserId,
       text: newMessage,
     });
+
     setNewMessage("");
   };
 
@@ -51,13 +87,25 @@ const Chat = () => {
       <div className="flex-1 overflow-y-auto p-5 space-y-4">
         {messages.map((msg, index) => {
           return (
-            <div key={index} className="chat chat-start">
+            <div
+              key={index}
+              className={`chat ${
+                msg.senderId === userId ? "chat-end" : "chat-start"
+              }`}
+            >
               <div className="chat-header text-sm mb-1">
-                {msg.firstName}
-                <time className="text-xs opacity-50 ml-2">2 hours ago</time>
+                {msg.firstName + " " + msg.lastName}
+                <time className="text-xs opacity-50 ml-2">
+                  {msg.createdAt
+                    ? new Date(msg.createdAt).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })
+                    : ""}
+                </time>
               </div>
               <div className="chat-bubble max-w-xs break-words">{msg.text}</div>
-              <div className="chat-footer opacity-50 text-xs">Seen</div>
+              {/* <div className="chat-footer opacity-50 text-xs">Seen</div> */}
             </div>
           );
         })}

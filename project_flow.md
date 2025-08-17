@@ -40,3 +40,4 @@
 - Build the UI for Chat window on /chat/:targetUserId
 - On Backend npm i socket.io & Setup socket.io
 - On Frontend npm i socket.io-client & Setup
+- Handling/Listening event using socket.on and emit the event using socket.emit
