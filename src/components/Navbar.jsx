@@ -30,7 +30,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-300 shadow-sm px-4 sm:px-6">
+    <div className="navbar bg-base-300 shadow-sm border-b border-gray-600 px-4 sm:px-6 sticky top-0 z-50">
       <div className="flex-1">
         <Link to={"/"} className="btn btn-ghost text-xl font-bold">
           DevTinder
