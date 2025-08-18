@@ -1,23 +1,31 @@
+// Updated UserCard Component
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { removeUserFromFeed } from "../utils/feedSlice";
 
-const UserCard = ({ user, showActions, showDemoButton }) => {
+const UserCard = ({ user, showActions, showDemoButton, onAction }) => {
   const dispatch = useDispatch();
   const { _id, firstName, lastName, age, gender, about, photoUrl, skills } =
     user;
 
   const handleSendRequest = async (status, userId) => {
     try {
-      const res = await axios.post(
+      await axios.post(
         BASE_URL + "/send/request/" + status + "/" + userId,
         {},
         { withCredentials: true }
       );
+
+      // Remove current user from feed
       dispatch(removeUserFromFeed(userId));
+
+      // Notify parent to load next user if needed
+      if (onAction) {
+        onAction();
+      }
     } catch (error) {
-      console.error(error);
+      console.error("Error sending request:", error);
     }
   };
 
@@ -55,13 +63,13 @@ const UserCard = ({ user, showActions, showDemoButton }) => {
               className="btn btn-secondary"
               onClick={() => handleSendRequest("interested", _id)}
             >
-              Intersted
+              Interested
             </button>
           </div>
         )}
 
         {showDemoButton && (
-          <p className=" text-center bg-secondary p-2 font-semibold rounded-xs mt-2">
+          <p className="text-center bg-secondary p-2 font-semibold rounded-xs mt-2">
             Replica of your Profile
           </p>
         )}
