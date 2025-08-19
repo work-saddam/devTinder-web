@@ -39,7 +39,7 @@ const Feed = () => {
         // console.log(`Added ${newUsers.length} users to feed`);
       }
     } catch (error) {
-      console.error("Error fetching feed:", error);
+      // console.error("Error fetching feed:", error);
       setAllUsersExhausted(true);
     } finally {
       setLoading(false);
