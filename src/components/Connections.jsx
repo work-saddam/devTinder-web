@@ -1,7 +1,7 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useEffect } from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionsSlice";
 import { Link } from "react-router-dom";
 
@@ -28,7 +28,7 @@ const Connections = () => {
   if (connections.length === 0)
     return (
       <div className="text-center">
-        <h2 className="sm:text-3xl text-2xl font-bold text-neutral-content pt-8">
+        <h2 className="sm:text-3xl text-2xl font-bold pt-8">
           No Connections Found!
         </h2>
         <img
@@ -73,7 +73,7 @@ const Connections = () => {
                 <p className="text-sm">{about}</p>
               </div>
               <Link to={`/chat/${_id}`}>
-                <button className="btn btn-soft btn-warning sm:w-24">
+                <button className="btn btn-outline btn-warning sm:w-24">
                   Chat
                 </button>
               </Link>

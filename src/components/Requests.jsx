@@ -40,7 +40,7 @@ const Requests = () => {
   if (requests.length === 0)
     return (
       <div className="text-center">
-        <h3 className="sm:text-3xl text-2xl font-bold text-neutral-content py-8">
+        <h3 className="sm:text-3xl text-2xl font-bold py-8">
           No Connection Requests Received!
         </h3>
         <img
@@ -87,13 +87,13 @@ const Requests = () => {
 
                 <div className="flex gap-2 mt-2">
                   <button
-                    className="btn btn-error btn-soft btn-sm"
+                    className="btn btn-error btn-outline btn-sm"
                     onClick={() => reviewRequest("rejected", request._id)}
                   >
                     Reject
                   </button>
                   <button
-                    className="btn btn-success btn-soft btn-sm"
+                    className="btn btn-success btn-outline btn-sm"
                     onClick={() => reviewRequest("accepted", request._id)}
                   >
                     Accept

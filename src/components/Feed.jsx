@@ -76,7 +76,7 @@ const Feed = () => {
     if (allUsersExhausted) {
       return (
         <div className="text-center">
-          <h2 className="sm:text-3xl text-2xl font-bold text-neutral-content py-8">
+          <h2 className="sm:text-3xl text-2xl font-bold py-8">
             You've seen all available users!
           </h2>
           <p className="text-lg mb-4">Check back later for new profiles</p>
@@ -92,7 +92,7 @@ const Feed = () => {
 
     return (
       <div className="text-center">
-        <h2 className="sm:text-3xl text-2xl font-bold text-neutral-content py-8">
+        <h2 className="sm:text-3xl text-2xl font-bold py-8">
           No New Users Found!
         </h2>
         <img

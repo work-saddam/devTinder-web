@@ -63,7 +63,7 @@ const Login = () => {
                   <label className="fieldset-legend">First Name</label>
                   <input
                     type="text"
-                    className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="input input-bordered w-full bg-base-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     placeholder="Enter your first name"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
@@ -71,7 +71,7 @@ const Login = () => {
                   <label className="fieldset-legend">Last Name</label>
                   <input
                     type="text"
-                    className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="input input-bordered w-full bg-base-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     placeholder="Enter your last name"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
@@ -82,7 +82,7 @@ const Login = () => {
               <label className="fieldset-legend">Email ID</label>
               <input
                 type="email"
-                className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="input input-bordered w-full bg-base-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="Enter your email"
                 value={emailId}
                 onChange={(e) => setEmailId(e.target.value)}
@@ -91,7 +91,7 @@ const Login = () => {
               <label className="fieldset-legend">Password</label>
               <input
                 type="password"
-                className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="input input-bordered w-full bg-base-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

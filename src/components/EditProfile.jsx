@@ -57,7 +57,7 @@ const EditProfile = ({ user }) => {
                     <input
                       type="text"
                       placeholder="Enter First Name"
-                      className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="input input-bordered w-full bg-base-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                       value={firstName}
                       onChange={(e) => setFirsttName(e.target.value)}
                     />
@@ -68,7 +68,7 @@ const EditProfile = ({ user }) => {
                     <input
                       type="text"
                       placeholder="Enter Last Name"
-                      className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="input input-bordered w-full bg-base-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
                     />
@@ -80,7 +80,7 @@ const EditProfile = ({ user }) => {
                 <input
                   type="text"
                   placeholder="Eg: LinkedIn Profile Photo URL"
-                  className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="input input-bordered w-full bg-base-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   value={photoUrl}
                   onChange={(e) => setPhotoUrl(e.target.value)}
                 />
@@ -91,7 +91,7 @@ const EditProfile = ({ user }) => {
                     <input
                       type="text"
                       placeholder="Enter Age"
-                      className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="input input-bordered w-full bg-base-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                       value={age}
                       onChange={(e) => setAge(e.target.value)}
                     />
@@ -100,7 +100,7 @@ const EditProfile = ({ user }) => {
                     {/* Gender */}
                     <label className="fieldset-legend">Gender</label>
                     <select
-                      className="select select-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="select select-bordered w-full bg-base-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                       value={gender}
                       onChange={(e) => setGender(e.target.value)}
                     >
@@ -115,14 +115,14 @@ const EditProfile = ({ user }) => {
                 <input
                   type="text"
                   placeholder="Eg: React, Java, Python..."
-                  className="input input-bordered w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="input input-bordered w-full bg-base-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   value={skills}
                   onChange={(e) => setSkills(e.target.value)}
                 />
                 {/* About */}
                 <label className="fieldset-legend">About</label>
                 <textarea
-                  className="textarea w-full bg-base-100 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="textarea w-full bg-base-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   value={about}
                   placeholder="About your self"
                   onChange={(e) => setAbout(e.target.value)}
