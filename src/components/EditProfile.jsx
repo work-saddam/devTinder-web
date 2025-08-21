@@ -16,11 +16,12 @@ const EditProfile = ({ user }) => {
   const [skills, setSkills] = useState(user.skills);
   const [error, setError] = useState("");
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
   const saveProfile = async (e) => {
     e.preventDefault();
-    // Clear Error
+    setIsLoading(true);
     setError("");
     try {
       const res = await axios.put(
@@ -32,10 +33,12 @@ const EditProfile = ({ user }) => {
       setShowToast(true);
       setTimeout(() => {
         setShowToast(false);
-      }, 1000);
+      }, 2000);
     } catch (error) {
       console.log(error);
       setError(error?.response?.data?.error || "Something went wrong!");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -133,8 +136,12 @@ const EditProfile = ({ user }) => {
                 <button
                   type="submit"
                   className="btn w-full btn-primary hover:scale-[1.02] transition-transform mt-3"
+                  disabled={isLoading}
                 >
                   Save Profile
+                  {isLoading && (
+                    <span className="loading loading-spinner loading-sm ml-2"></span>
+                  )}
                 </button>
               </div>
             </div>
@@ -153,9 +160,9 @@ const EditProfile = ({ user }) => {
 
       {/* Toast */}
       {showToast && (
-        <div className="toast toast-top toast-center">
-          <div className="alert alert-success">
-            <span>Profile update successfully.</span>
+        <div className="toast toast-top toast-center z-50 animate-fadeInOut">
+          <div className="alert alert-success shadow-lg">
+            <span className="font-semibold">Profile updated successfully.</span>
           </div>
         </div>
       )}

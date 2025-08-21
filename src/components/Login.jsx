@@ -14,9 +14,13 @@ const Login = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [isLoginForm, setIsLoginForm] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError("");
+
     try {
       const res = await axios.post(
         BASE_URL + "/login",
@@ -27,11 +31,15 @@ const Login = () => {
       navigate("/");
     } catch (error) {
       setError(error?.response?.data?.error || "Something went wrong!");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError("");
     try {
       const res = await axios.post(
         BASE_URL + "/signup",
@@ -42,6 +50,8 @@ const Login = () => {
       navigate("/profile");
     } catch (error) {
       setError(error?.response?.data?.error || "Something went wrong!");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -104,8 +114,12 @@ const Login = () => {
               <button
                 type="submit"
                 className="btn w-full btn-primary hover:scale-[1.02] transition-transform mt-4"
+                disabled={isLoading}
               >
                 {isLoginForm ? "Login" : "Sign Up"}
+                {isLoading && (
+                  <span className="loading loading-spinner loading-sm ml-2"></span>
+                )}
               </button>
             </div>
 
