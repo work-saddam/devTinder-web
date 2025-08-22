@@ -32,7 +32,7 @@ const Feed = () => {
 
       if (newUsers.length === 0) {
         setAllUsersExhausted(true);
-        console.log("No users returned");
+        // console.log("No users returned");
       } else {
         dispatch(addFeed(newUsers));
         setAllUsersExhausted(!pagination?.hasMore);
