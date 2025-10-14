@@ -41,3 +41,18 @@
 - On Backend npm i socket.io & Setup socket.io
 - On Frontend npm i socket.io-client & Setup
 - Handling/Listening event using socket.on and emit the event using socket.emit
+
+## RazorPay Payment Gateway Integaration
+
+- Signup on razorpay & complete KYC.
+- Create a UI for premium page.
+
+- npm install razorpay
+- In utils, initialize razorpay
+- In routes create Order api.
+- In model, create schema to store payment.
+- Setup razorpay webhook on live API
+- Ref - https://github.com/razorpay/razorpay-node/tree/master/documents
+- Ref - https://razorpay.com/docs/payments/server-integration/nodejs/integration-steps/#integrate-with-razorpay-payment-gateway
+- Ref - https://razorpay.com/docs/webhooks/validate-test/
+- Ref - https://razorpay.com/docs/webhooks/payloads/payments/

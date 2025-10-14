@@ -76,6 +76,11 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
+                <Link to={"/premium"} onClick={closeDropdown}>
+                  Premiums
+                </Link>
+              </li>
+              <li>
                 <a onClick={handleLogout}>Logout</a>
               </li>
             </ul>
