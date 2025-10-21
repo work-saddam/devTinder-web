@@ -48,7 +48,7 @@ const Premium = () => {
           color: "#F37254",
         },
 
-        handle: verifyPremiumUser,
+        handler: verifyPremiumUser,
       };
 
       const rzp = new window.Razorpay(options);
@@ -59,7 +59,11 @@ const Premium = () => {
   };
 
   return isUserPremium ? (
-    <div> You are already a premium user</div>
+    <div>
+      <p className="text-2xl font-medium text-center mt-6">
+        You are already a premium user!!
+      </p>
+    </div>
   ) : (
     <div className="flex my-16 w-full flex-col lg:flex-row px-8">
       <div className="card bg-base-300 rounded-box grid h-80 grow place-items-center">
